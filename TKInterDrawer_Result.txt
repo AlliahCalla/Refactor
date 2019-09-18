@@ -1,0 +1,159 @@
+Starting TKinter Drawer. Here we go ! 
+Pen size: 1
+X position: 250
+Y position: 250
+Pen color: black
+Pen color: black
+New X position: 300.0
+New Y position: 250.0
+Pen color: black
+New X position: 350.0
+New Y position: 250.0
+Pen color: black
+New X position: 350.0
+New Y position: 300.0
+Pen color: black
+New X position: 350.0
+New Y position: 350.0
+Pen color: black
+New X position: 350.0
+New Y position: 400.0
+Is pen down ?: False
+Pen color: white
+New X position: 350.0
+New Y position: 350.0
+Pen color: white
+New X position: 350.0
+New Y position: 300.0
+Pen color: white
+New X position: 300.0
+New Y position: 300.0
+Pen color: white
+New X position: 250.0
+New Y position: 300.0
+Pen color: white
+New X position: 200.0
+New Y position: 300.0
+Pen color: white
+New X position: 150.0
+New Y position: 300.0
+Pen color: white
+New X position: 150.0
+New Y position: 350.0
+Pen color: white
+New X position: 150.0
+New Y position: 400.0
+Pen color: white
+New X position: 150.0
+New Y position: 450.0
+Pen color: white
+New X position: 200.0
+New Y position: 450.0
+Pen color: white
+New X position: 250.0
+New Y position: 450.0
+Pen color: white
+New X position: 300.0
+New Y position: 450.0
+We are drawing a square
+We are drawing a circle
+Is pen down ?: True
+We are drawing a square
+Pen color: black
+New X position: 350.0
+New Y position: 450.0
+Pen color: black
+New X position: 350.0
+New Y position: 400.0
+Pen color: black
+New X position: 300.0
+New Y position: 400.0
+Pen color: black
+New X position: 300.0
+New Y position: 450.0
+We are drawing a circle
+We are drawing a triangle
+We are restting
+Back to original X coordinate: 250
+Back to original Y coordinate: 250
+Pen color: black
+New X position: 300.0
+New Y position: 250.0
+Pen color: black
+New X position: 350.0
+New Y position: 250.0
+Pen color: black
+New X position: 350.0
+New Y position: 300.0
+Pen color: black
+New X position: 350.0
+New Y position: 350.0
+Pen color: black
+New X position: 300.0
+New Y position: 350.0
+Pen color: black
+New X position: 250.0
+New Y position: 350.0
+Pen color: black
+New X position: 250.0
+New Y position: 300.0
+Pen color: black
+New X position: 250.0
+New Y position: 250.0
+Pen color: black
+New X position: 300.0
+New Y position: 250.0
+Pen color: black
+New X position: 350.0
+New Y position: 250.0
+Pen color: black
+New X position: 350.0
+New Y position: 300.0
+Pen color: black
+New X position: 350.0
+New Y position: 350.0
+Pen color: black
+New X position: 350.0
+New Y position: 400.0
+Pen color: black
+New X position: 300.0
+New Y position: 400.0
+Pen color: black
+New X position: 250.0
+New Y position: 400.0
+Pen color: black
+New X position: 200.0
+New Y position: 400.0
+Pen color: black
+New X position: 150.0
+New Y position: 400.0
+Pen color: black
+New X position: 150.0
+New Y position: 350.0
+Pen color: black
+New X position: 150.0
+New Y position: 300.0
+Pen color: black
+New X position: 150.0
+New Y position: 250.0
+Pen color: black
+New X position: 150.0
+New Y position: 200.0
+Pen color: black
+New X position: 150.0
+New Y position: 150.0
+Pen color: black
+New X position: 200.0
+New Y position: 150.0
+Pen color: black
+New X position: 250.0
+New Y position: 150.0
+Pen color: black
+New X position: 300.0
+New Y position: 150.0
+Pen color: black
+New X position: 350.0
+New Y position: 150.0
+Pen color: black
+New X position: 350.0
+New Y position: 200.0
