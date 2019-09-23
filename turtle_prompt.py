@@ -1,82 +1,89 @@
 from turtle_drawer import TurtleDrawer
-import parsers
 from cmd import Cmd
 from writer import *
+from TIGr import AbstractParser
 
 
-class TurtlePrompt(Cmd):
+class TurtlePrompt(Cmd, AbstractParser):
     results = Writer("TurtleDrawer_Result.txt")
     welcome = "Welcome to Turtle Shell"
     prompt = '(turtle)'
     file = None
 
+    def parse(self, raw_source):
+        self.source = raw_source
+        try:
+            self.data = int(self.source)
+        except:
+            self.command = str(self.source)
+
     def do_P(self, arg):
         """Select Pen:  P 10"""
         self.results.writeToFile("Selected pen", arg)
-        data = parsers.IntegerParser.parse(self, arg)
-        TurtleDrawer.select_pen(self, data)
+        self.parse(arg)
+        TurtleDrawer.select_pen(self, self.data)
 
     def do_U(self, arg):
         """Pen Up : U"""
         self.results.writeToFile("Pen is up", arg)
-        command = parsers.StringParser.parse(self, arg)
-        TurtleDrawer.pen_up(command)
+        self.parse(arg)
+        TurtleDrawer.pen_up(self.command)
 
     def do_D(self, arg):
         """Pen Down : D"""
         self.results.writeToFile("Pen is down", arg)
-        command = parsers.StringParser.parse(self, arg)
-        TurtleDrawer.pen_down(command)
+        self.parse(arg)
+        TurtleDrawer.pen_down(self.command)
 
     def do_X(self, arg):
         """Go Along : X 100"""
         self.results.writeToFile("Go Along : X ", arg)
-        command = parsers.IntegerParser.parse(self, arg)
-        TurtleDrawer.go_along(self, command)
+        self.parse(arg)
+        TurtleDrawer.go_along(self, self.data)
 
     def do_Y(self, arg):
         """Go Down : Y 100"""
         self.results.writeToFile("Go Along : Y", arg)
-        command = parsers.IntegerParser.parse(self, arg)
-        TurtleDrawer.go_down(self, command)
+        self.parse(arg)
+        TurtleDrawer.go_down(self, self.data)
 
     def do_N(self, arg):
         """Draw line 0 degrees : N 100"""
         self.results.writeToFile("Draw line 0 degrees : N", arg)
-        command = parsers.IntegerParser.parse(self, arg)
-        TurtleDrawer.draw_line(self, 0, command)
+        self.parse(arg)
+        TurtleDrawer.draw_line(self, 0, self.data)
 
     def do_E(self, arg):
         """Draw line 90 degrees : E 100"""
         self.results.writeToFile("Draw line 90 degrees : E", arg)
-        command = parsers.IntegerParser.parse(self, arg)
-        TurtleDrawer.draw_line(self, 90, command)
+        self.parse(arg)
+        TurtleDrawer.draw_line(self, 90, self.data)
 
     def do_S(self, arg):
         """Draw line 120 degrees : S 100"""
         self.results.writeToFile("Draw line 120 degrees : S", arg)
-        command = parsers.IntegerParser.parse(self, arg)
-        TurtleDrawer.draw_line(self, 180, command)
+        self.parse(arg)
+        TurtleDrawer.draw_line(self, 180, self.data)
 
     def do_W(self, arg):
         """Draw line 270 degrees : W 100"""
         self.results.writeToFile("Draw line 270 degrees : W", arg)
-        command = parsers.IntegerParser.parse(self, arg)
-        TurtleDrawer.draw_line(self, 270, command)
+        self.parse(arg)
+        TurtleDrawer.draw_line(self, 270, self.data)
 
     def do_square(self, arg):
-        """Draw Square"""
+        """Draw Square: square 100"""
         self.results.writeToFile("Drawing a square")
-        command = parsers.IntegerParser.parse(self, arg)
+        self.parse(arg)
         directions = [0, 90, 180, 270]
         for i in directions:
-            TurtleDrawer.draw_line(self, i, command)
+            TurtleDrawer.draw_line(self, i, self.data)
 
-    def do_circle(self,arg):
-        """Draw Circle"""
+    def do_circle(self, arg):
+        """Draw Circle: circle 50"""
         self.results.writeToFile("Drawing a circle")
-        command = parsers.IntegerParser.parse(self, arg)
-        TurtleDrawer.draw_circle(self,command)
+        self.parse(arg)
+        TurtleDrawer.draw_circle(self, self.data)
 
     def do_Exit(self, arg):
         """Exit Turtle CMD"""

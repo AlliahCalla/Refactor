@@ -2,21 +2,6 @@ import argparse
 
 from TIGr import AbstractParser
 
-
-class IntegerParser(AbstractParser):
-    def parse(self, raw_source):
-        self.source = raw_source
-        self.data = int(self.source)
-        return self.data
-
-
-class StringParser(AbstractParser):
-    def parse(self, raw_source):
-        self.source = raw_source
-        self.command = str(self.source)
-        return self.command
-
-
 class ArgumentParser(AbstractParser):
     parser = argparse.ArgumentParser('Interface for Graphics, Turtle, Tkinter')
     parser.add_argument('-c', '--moduleCanvas', type=str, metavar='', help='Choose canvas')
