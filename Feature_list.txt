@@ -1,0 +1,20 @@
+Assignment One Feature List
+
+Drawer:
+Select pen size
+Pen down
+Pen up
+Draw a line (toward east, north, west and south)
+Change coordinate in either X or Y ( Go along & Go down)
+Draw a square
+Draw a circle
+Draw a triangle
+
+Parser:
+Parsing integer value
+Parsing string value
+Parse provided command text with drawer
+
+Reader:
+Run the program based on the value that was passed by Parser
+
