@@ -1,8 +1,7 @@
 from TIGr import AbstractDrawer
-from Parser import IntegerParser, StringParser
 from tkinter import *
 from tkinter import ttk
-from Writer import *
+from writer import *
 import math
 #Alliah & Chris
 

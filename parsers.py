@@ -1,5 +1,6 @@
-from TIGr import AbstractParser
 import argparse
+
+from TIGr import AbstractParser
 
 
 class IntegerParser(AbstractParser):
