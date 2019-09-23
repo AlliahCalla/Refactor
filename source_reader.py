@@ -1,6 +1,6 @@
 from TIGr import AbstractSourceReader
 from parsers import ArgumentParser
-from tkinter_graphical_interface import TkinterGraphicalInterface
+from tkinter_graphical_interface import TkinterGraphicInterface
 from turtle_prompt import TurtlePrompt
 from writer import Writer
 
@@ -18,7 +18,9 @@ class ArgumentSourceReader(AbstractSourceReader):
             TurtlePrompt().cmdloop()
         elif result == 'k':
             self.results.writeToFile("Running TKInter Drawer")
-            TkinterGraphicalInterface().setup()
+            tkinter_int = TkinterGraphicInterface()
+            tkinter_int.setup()
+            tkinter_int.root.mainloop()
         elif result == 'e':
             self.results.writeToFile("Exiting program")
             exit()
