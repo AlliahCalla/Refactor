@@ -3,45 +3,25 @@ from tkinter_drawer import ttk
 from tkinter_drawer import TkinterDrawer
 from writer import Writer
 
-class TkinterGraphicalInterface(TkinterDrawer):
+class TkinterGraphicInterface(TkinterDrawer):
 
     def __init__(self):
         self.root = Tk()
-        self.north = Entry(self.root)
-        self.direction = 0
-        self.distance = 0
-        self.pen_button = Button()
-        self.color_button = Button()
-        self.eraser_button = Button()
-        self.north_button = Button()
-        self.south_button = Button()
-        self.west_button = Button()
-        self.east_button = Button()
-        self.square_button = Button()
-        self.circle_button = Button()
-        self.triangle_button = Button()
-        self.up = Button()
-        self.down = Button()
-        self.clear_canvas = Button()
-        self.choose_size_button = Scale()
-        self.c = Canvas()
-        self.x = 0
-        self.y = 0
-        self.entry = 0.0
-        self.line_width = 1
-        self.button = Button()
-        self.north = Entry()
-        self.entry = self.north.get()
-        self.line_width = self.choose_size_button.get()
-        self.pen_state = True
-        # so can be used in every mehotds.
-        self.file = Writer("TKInterDrawer_Result.txt")
         self.buttons = []
         self.canvas = []
         self.entry = []
         self.scales = []
         self.separator = []
         self.label = []
+        self.x = 0
+        self.y = 0
+        self.file = Writer("TKInterDrawer_Result.txt")
+        self.pen_state = True
+        self.color = "black"
+        self.choose_size_button = 1
+        self.line_width = 1
+        self.direction = 0
+        self.distance = 0
 
     def __create_button(self, text):
         self.buttons.append(Button(self.root, text=text))
@@ -102,12 +82,62 @@ class TkinterGraphicalInterface(TkinterDrawer):
     def __setup_separator_position(self):
         self.__assign_position(self.separator[0], 1, 3, NS, 0, 0)
 
+    def __setup_button(self):
+        self.__create_button(' → ')
+        self.__create_button(' ← ')
+        self.__create_button('  ↑  ')
+        self.__create_button('  ↓  ')
+        self.__create_button('Pen up')
+        self.__create_button('Pen down')
+        self.__create_button('Clear Canvas')
+        self.__create_button('square')
+        self.__create_button('circle')
+        self.__create_button('triangle')
+
+    def __setup_button_methods(self):
+        self.buttons[0].config(command=lambda: self.draw_line(0, 50))
+        self.buttons[1].config(command=lambda: self.draw_line(180, 50))
+        self.buttons[2].config(command=lambda: self.draw_line(90, 50))
+        self.buttons[3].config(command=lambda: self.draw_line(270, 50))
+        self.buttons[4].config(command=lambda: self.pen_up())
+        self.buttons[5].config(command=lambda: self.pen_down())
+        self.buttons[6].config(command=lambda: self.reset())
+        self.buttons[7].config(command=lambda: self.draw_square())
+        self.buttons[8].config(command=lambda: self.draw_circle())
+        self.buttons[9].config(command=lambda: self.draw_triangle())
+
+    def __setup_button_position(self):
+        self.__assign_position(self.buttons[0], 1, 2, W, 10, 0)
+        self.__assign_position(self.buttons[1], 1, 0, E, 10, 0)
+        self.__assign_position(self.buttons[2], 0, 1, SW, 0, 0)
+        self.__assign_position(self.buttons[3], 2, 1, NW, 0, 0)
+
+    def __setup_button_grid(self):
+        self.__assign_grid(self.buttons[4], 0, 4)
+        self.__assign_grid(self.buttons[5], 0, 5)
+        self.__assign_grid(self.buttons[6], 0, 6)
+        self.__assign_grid(self.buttons[7], 2, 4)
+        self.__assign_grid(self.buttons[8], 2, 5)
+        self.__assign_grid(self.buttons[9], 2, 6)
+
+    def __setup_button_y(self):
+        self.__assign_padding_y(self.buttons[4], 10)
+        self.__assign_padding_y(self.buttons[5], 10)
+        self.__assign_padding_y(self.buttons[6], 10)
+        self.__assign_padding_y(self.buttons[7], 10)
+        self.__assign_padding_y(self.buttons[9], 10)
+
+    def __finalize(self):
+        self.canvas[0].grid(row=60, columnspan=60)
+        self.line_width = self.scales[0].get()
+        self.canvas[0].bind('<B1-Motion>', self.draw_line)
+        self.canvas[0].bind('<ButtonRelease-1>', self.reset)
+
     def setup(self):
         self.root.geometry("510x645")
         self.choose_size_button = 1
         self.x = 250
         self.y = 250
-        self.color = "black"
 
         # Idea of getting value to be stored in txt file for testing
         self.file.writeToFile("Pen size", self.choose_size_button)
@@ -115,47 +145,19 @@ class TkinterGraphicalInterface(TkinterDrawer):
         self.file.writeToFile("Y position", self.y)
         self.file.writeToFile("Pen color", self.color)
 
-        self.c = Canvas(self.root, bg='white', width=500, height=500)
-        self.c.grid_rowconfigure(0, weight=1)
-        self.c.grid_columnconfigure(0, weight=1)
-
-        pen_size = Label(self.root, text="Pen Size: ")
-        pen_size.grid(row=1, column=4, pady=12)
-        self.choose_size_button = Scale(self.root, from_=1, to=2, orient=HORIZONTAL)
-        self.choose_size_button.grid(row=1, column=5)
-
-        self.north_button = Button(self.root, text=' → ', command=lambda: self.draw_line(0, 50))
-        self.north_button.grid(row=1, column=2, sticky=W, padx=10)
-
-        self.south_button = Button(self.root, text=' ← ', command=lambda: self.draw_line(180, 50))
-        self.south_button.grid(row=1, column=0, sticky=E, padx=10)
-
-        self.east_button = Button(self.root, text='  ↑  ', command=lambda: self.draw_line(90, 50))
-        self.east_button.grid(row=0, column=1, sticky=SW)
-
-        self.west_button = Button(self.root, text='  ↓  ', command=lambda: self.draw_line(270, 50))
-        self.west_button.grid(row=2, column=1, sticky=NW)
-
-        separator = ttk.Separator(self.root, orient=VERTICAL)
-        separator.grid(row=1, column=3, sticky=NS)
-
-        self.up = Button(self.root, text='Pen up', command=lambda: self.pen_up())
-        self.up.grid(row=0, column=4, pady=10)
-
-        self.down = Button(self.root, text='Pen down', command=lambda: self.pen_down())
-        self.down.grid(row=0, column=5, pady=10)
-
-        self.clear_canvas = Button(self.root, text='Clear Canvas', command=lambda: self.reset())
-        self.clear_canvas.grid(row=0, column=6, pady=10)
-
-        self.square_button = Button(self.root, text='square', command=lambda: self.draw_square())
-        self.square_button.grid(row=2, column=4, pady=10)
-        self.circle_button = Button(self.root, text='circle', command=lambda: self.draw_circle())
-        self.circle_button.grid(row=2, column=5)
-        self.triangle_button = Button(self.root, text='triangle', command=lambda: self.draw_triangle())
-        self.triangle_button.grid(row=2, column=6, pady=10)
-        self.c.grid(row=60, columnspan=60)
-        self.line_width = self.choose_size_button.get()
-        self.c.bind('<B1-Motion>', self.draw_line)
-        self.c.bind('<ButtonRelease-1>', self.reset)
+        self.__setup_canvas()
+        self.__setup_canvas_position()
+        self.__setup_label()
+        self.__setup_label_position()
+        self.__setup_scale()
+        self.__setup_scale_position()
+        self.line_width = self.scales[0].get()
+        self.__setup_button()
+        self.__setup_button_grid()
+        self.__setup_button_position()
+        self.__setup_button_y()
+        self.__setup_button_methods()
+        self.__setup_separator()
+        self.__setup_separator_position()
+        self.__finalize()
         self.start()

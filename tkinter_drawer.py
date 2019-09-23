@@ -43,7 +43,7 @@ class TkinterDrawer(AbstractDrawer):
             new_direction = 270
         if direction == 270:
             new_direction = 90
-        
+
         angle_in_radians = new_direction * math.pi / 180
 
         line_length = distance
@@ -52,8 +52,8 @@ class TkinterDrawer(AbstractDrawer):
 
         end_x = center_x + line_length * math.cos(angle_in_radians)
         end_y = center_y + line_length * math.sin(angle_in_radians)
-        self.line_width = self.choose_size_button.get()
-        self.c.create_line(self.x, self.y, end_x, end_y, fill=self.color, width=self.line_width)
+        self.line_width = self.scales[0].get()
+        self.canvas[0].create_line(self.x, self.y, end_x, end_y, fill=self.color, width=self.line_width)
         self.x = end_x
         self.y = end_y
         self.file.writeToFile("New X position", self.x)
@@ -70,21 +70,21 @@ class TkinterDrawer(AbstractDrawer):
         self.file.writeToFile("We are drawing a circle")
         r = 50
         if self.pen_state:
-            self.c.create_oval(self.x - r, self.y - r, self.x + r, self.y + r,width=self.line_width)
+            self.canvas[0].create_oval(self.x - r, self.y - r, self.x + r, self.y + r, width=self.line_width)
 
     def draw_triangle(self):
         self.file.writeToFile("We are drawing a triangle")
-        self.c.create_line(55, 85, 155, 85, 105, 180, 55, 85, width=self.line_width)
+        self.canvas[0].create_line(55, 85, 155, 85, 105, 180, 55, 85, width=self.line_width)
 
     def reset(self):
         self.file.writeToFile("We are restting")
         self.x = 250
         self.y = 250
-        self.c.delete("all")
+        self.canvas[0].delete("all")
         self.file.writeToFile("Back to original X coordinate", self.x)
         self.file.writeToFile("Back to original Y coordinate", self.y)
 
-
     def start(self):
         self.file.writeToFile("Starting TKinter Drawer. Here we go ! ")
-        self.root.mainloop()
+
+
