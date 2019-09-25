@@ -1,9 +1,11 @@
-from TIGr import AbstractDrawer
+from tigr import AbstractDrawer
 from tkinter import *
 from tkinter import ttk
 from writer import *
 import math
-#Alliah & Chris
+
+
+# Alliah & Chris
 
 class TkinterDrawer(AbstractDrawer):
 
@@ -53,7 +55,8 @@ class TkinterDrawer(AbstractDrawer):
         end_x = center_x + line_length * math.cos(angle_in_radians)
         end_y = center_y + line_length * math.sin(angle_in_radians)
         self.line_width = self.scales[0].get()
-        self.canvas[0].create_line(self.x, self.y, end_x, end_y, fill=self.color, width=self.line_width)
+        self.canvas[0].create_line(self.x, self.y, end_x, end_y,
+                                   fill=self.color, width=self.line_width)
         self.x = end_x
         self.y = end_y
         self.file.writeToFile("New X position", self.x)
@@ -70,11 +73,14 @@ class TkinterDrawer(AbstractDrawer):
         self.file.writeToFile("We are drawing a circle")
         r = 50
         if self.pen_state:
-            self.canvas[0].create_oval(self.x - r, self.y - r, self.x + r, self.y + r, width=self.line_width)
+            self.canvas[0].create_oval(self.x - r, self.y - r,
+                                       self.x + r, self.y + r,
+                                       width=self.line_width)
 
     def draw_triangle(self):
         self.file.writeToFile("We are drawing a triangle")
-        self.canvas[0].create_line(55, 85, 155, 85, 105, 180, 55, 85, width=self.line_width)
+        self.canvas[0].create_line(55, 85, 155, 85, 105,
+                                   180, 55, 85, width=self.line_width)
 
     def reset(self):
         self.file.writeToFile("We are restting")
@@ -86,5 +92,3 @@ class TkinterDrawer(AbstractDrawer):
 
     def start(self):
         self.file.writeToFile("Starting TKinter Drawer. Here we go ! ")
-
-

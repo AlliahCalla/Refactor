@@ -1,4 +1,4 @@
-from TIGr import AbstractSourceReader
+from tigr import AbstractSourceReader
 from parsers import ArgumentParser
 from tkinter_graphical_interface import TkinterGraphicInterface
 from turtle_prompt import TurtlePrompt
@@ -25,7 +25,8 @@ class ArgumentSourceReader(AbstractSourceReader):
             self.results.writeToFile("Exiting program")
             exit()
         else:
-            self.results.writeToFile("Graphics from else as arguments were wrong")
+            self.results.writeToFile("Graphics from else "
+                                     "+as arguments were wrong")
             print('graphics')
 
 

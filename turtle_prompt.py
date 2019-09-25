@@ -1,7 +1,7 @@
 from turtle_drawer import TurtleDrawer
 from cmd import Cmd
 from writer import *
-from TIGr import AbstractParser
+from tigr import AbstractParser
 
 
 class TurtlePrompt(Cmd, AbstractParser):

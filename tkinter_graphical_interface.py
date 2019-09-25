@@ -3,6 +3,7 @@ from tkinter_drawer import ttk
 from tkinter_drawer import TkinterDrawer
 from writer import Writer
 
+
 class TkinterGraphicInterface(TkinterDrawer):
 
     def __init__(self):
