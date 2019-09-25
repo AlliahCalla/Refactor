@@ -1,6 +1,8 @@
-from TIGr import AbstractDrawer
+from tigr import AbstractDrawer
 import turtle
-#Alliah & Caitlyn
+
+
+# Alliah & Caitlyn
 
 class TurtleDrawer(AbstractDrawer):
 
@@ -37,6 +39,5 @@ class TurtleDrawer(AbstractDrawer):
         turtle.seth(newDirection)
         turtle.forward(distance)
 
-    def draw_circle(self,radius):
+    def draw_circle(self, radius):
         turtle.circle(radius)
-
